@@ -8,49 +8,34 @@
 #include "Input.hpp"
 #include "draw.hpp"
 #include "movement.hpp"
-
+#include "stage.hpp"
 using namespace std;
-
 
 int main(int argc, char* argv[])
 {
-    
-    memset(&app,0,sizeof(renderwindow));
-    memset(&player,0,sizeof(Entity));
-    initSDL();
+    memset(&app, 0, sizeof(App));
+	memset(&player, 0, sizeof(Entity));
+    memset(&bullet,0,sizeof(Entity));
 
+	initSDL();
+
+
+	player.texture = loadTexture("ship2.png");
+    
 	player.x = 590;
 	player.y = 597;
-    player.health=100;
-	player.texture = loadTexture("ship2.png");
-    bullet.texture = loadTexture("bullet_level_1.png");
-    while (1)
+
+	while (1)
 	{
 		prepareScene();
-        
+
 		doInput();
 
-        if(bullet.health==0)
-        {
-            //add bullet audio
-            bullet.x=player.x+35;
-            bullet.y=player.y;
-            bullet.dy=16;
-            bullet.dx=0;
-            bullet.health=1;
-        }
-        bullet.x+=bullet.dx;
-        bullet.y-=bullet.dy;
+		movePlayer();
 
-        if(bullet.y<-50)
-        {
-            bullet.health=0;
-        }
-        blit(player.texture, player.x, player.y);
-        if(bullet.health>0)
-        {
-            blit(bullet.texture,bullet.x,bullet.y);
-        }
+		doBullet();
+
+        draw();
         
 		presentScene();
 

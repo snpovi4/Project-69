@@ -39,4 +39,20 @@ void blit(SDL_Texture *texture, int x, int y)
 	SDL_RenderCopy(app.renderer, texture, NULL, &dest);
 }
 
+void drawPlayer(void)
+{
+	blit(player.texture, player.x, player.y);
+}
+void drawBullet(void)
+{
+	for(auto tmp : bullet)
+	{
+		blit(tmp.texture, tmp.x, tmp.y);
+	}
+}
+static void draw(void)
+{
+	drawPlayer();
+	drawBullet();
+}
 #endif

@@ -6,19 +6,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct renderwindow
+struct App
 {
 	SDL_Renderer *renderer;
 	SDL_Window *window;
-    int fire;
+    int up,down,left,right;
+	int keyboard[MAX_KEYBOARD_KEYS];
 }app;
 
 struct Entity
 {
 	int x;
 	int y;
-    int dx,dy,health;
+    int dx,dy,health,reload;
 	SDL_Texture *texture;
-} player,bullet;
+} player;
+vector<Entity>bullet;
 
 #endif
