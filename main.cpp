@@ -9,21 +9,23 @@
 #include "draw.hpp"
 #include "movement.hpp"
 #include "stage.hpp"
+#include "Collision.hpp"
 using namespace std;
 
 int main(int argc, char* argv[])
 {
+	long then;
+	float remainder;
+
     memset(&app, 0, sizeof(App));
-	memset(&player, 0, sizeof(Entity));
-    memset(&bullet,0,sizeof(Entity));
 
 	initSDL();
 
+	initstage();
 
-	player.texture = loadTexture("ship2.png");
-    
-	player.x = 590;
-	player.y = 597;
+	then = SDL_GetTicks();
+
+	remainder = 0;
 
 	while (1)
 	{
@@ -33,13 +35,17 @@ int main(int argc, char* argv[])
 
 		movePlayer();
 
+		doenemy();
+
 		doBullet();
+
+		spawnenemy();
 
         draw();
         
 		presentScene();
 
-		SDL_Delay(16);
+		capFrameRate(&then, &remainder);
 	}
     return 0;
 }

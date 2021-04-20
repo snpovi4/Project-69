@@ -2,7 +2,8 @@
 #ifndef defs_hpp
 #define defs_hpp 
 #include <SDL2/SDL.h>
-#include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
+#include<SDL2/SDL_timer.h>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -12,5 +13,7 @@ using namespace std;
 #define PLAYER_BULLET_SPEED   16
 
 #define MAX_KEYBOARD_KEYS 350
+#define SIDE_PLAYER 0
+#define SIDE_ALIEN  1
 
 #endif

@@ -2,7 +2,8 @@
 #ifndef draw_hpp
 #define draw_hpp 
 #include <SDL2/SDL.h>
-#include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
+#include<SDL2/SDL_timer.h>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -50,9 +51,18 @@ void drawBullet(void)
 		blit(tmp.texture, tmp.x, tmp.y);
 	}
 }
+static void drawenemy(void)
+{
+	for (auto tmp : enemy)
+	{
+		blit(tmp.texture, tmp.x, tmp.y);
+	}
+}
 static void draw(void)
 {
 	drawPlayer();
 	drawBullet();
+	drawenemy();
 }
+
 #endif
