@@ -22,7 +22,7 @@ struct Entity
 	int side;
 	SDL_Texture *texture;
 } player;
-vector<Entity>bullet,enemy;
+vector<Entity>bullet,enemy,destroyed_enemy;
 int enemyspawntimer;
 
 #endif

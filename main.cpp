@@ -14,8 +14,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	long then;
-	float remainder;
+	//double then,remainder;
 
     memset(&app, 0, sizeof(App));
 
@@ -23,9 +22,9 @@ int main(int argc, char* argv[])
 
 	initstage();
 
-	then = SDL_GetTicks();
+	//then = SDL_GetTicks();
 
-	remainder = 0;
+	//remainder = 0;
 
 	while (1)
 	{
@@ -45,7 +44,8 @@ int main(int argc, char* argv[])
         
 		presentScene();
 
-		capFrameRate(&then, &remainder);
+		//capFrameRate(&then, &remainder);
+		SDL_Delay(16);
 	}
     return 0;
 }

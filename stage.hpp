@@ -94,8 +94,32 @@ void doenemy(void)
     }
     sort(pos.rbegin(),pos.rend());
     for(int i=0;i<pos.size();i++)
-    {
+    {   
+        if(rand()%2==0){
+            enemy[pos[i]].dx=10;
+        }
+        else{
+            enemy[pos[i]].dx=-10;
+        }
+        enemy[pos[i]].dy=5;
+        enemy[pos[i]].texture = loadTexture("efct.png");
+        destroyed_enemy.push_back(enemy[pos[i]]);
         enemy.erase(enemy.begin()+pos[i]);
+    }
+    pos.clear();
+    for(int i=0;i<destroyed_enemy.size();i++)
+    {
+        destroyed_enemy[i].x += destroyed_enemy[i].dx;
+		destroyed_enemy[i].y += destroyed_enemy[i].dy;
+        if(destroyed_enemy[i].y>720)
+        {
+            pos.push_back(i);
+        }
+    }
+    sort(pos.rbegin(),pos.rend());
+    for(int i=0;i<pos.size();i++)
+    {   
+        destroyed_enemy.erase(destroyed_enemy.begin()+pos[i]);
     }
 }
 #endif

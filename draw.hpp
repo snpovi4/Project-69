@@ -57,7 +57,12 @@ static void drawenemy(void)
 	{
 		blit(tmp.texture, tmp.x, tmp.y);
 	}
+	for (auto tmp : destroyed_enemy)
+	{
+		blit(tmp.texture, tmp.x, tmp.y);
+	}
 }
+
 static void draw(void)
 {
 	drawPlayer();
